@@ -1,0 +1,95 @@
+[
+  {
+    "id": 1,
+    "firstName": "Gael",
+    "lastName": "CADORET",
+    "subjects": [
+      {
+        "id": 1,
+        "label": "Maths",
+        "type": "scientist",
+        "note": 13
+      },
+      {
+        "id": 2,
+        "label": "French",
+        "type": "literary",
+        "note": 11
+      },
+      {
+        "id": 3,
+        "label": "English",
+        "type": "literary",
+        "note": 12
+      },
+      {
+        "id": 4,
+        "label": "Physics",
+        "type": "scientist",
+        "note": 14
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "firstName": "Vincent",
+    "lastName": "VADE",
+    "subjects": [
+      {
+        "id": 1,
+        "label": "Maths",
+        "type": "scientist",
+        "note": 17
+      },
+      {
+        "id": 2,
+        "label": "French",
+        "type": "literary",
+        "note": 15
+      },
+      {
+        "id": 3,
+        "label": "English",
+        "type": "literary",
+        "note": 16
+      },
+      {
+        "id": 4,
+        "label": "Physics",
+        "type": "scientist",
+        "note": 18
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "firstName": "Aurélien",
+    "lastName": "GUILLAUME",
+    "subjects": [
+      {
+        "id": 1,
+        "label": "Maths",
+        "type": "scientist",
+        "note": 20
+      },
+      {
+        "id": 2,
+        "label": "French",
+        "type": "literary",
+        "note": 11
+      },
+      {
+        "id": 3,
+        "label": "English",
+        "type": "literary",
+        "note": 13
+      },
+      {
+        "id": 4,
+        "label": "Physics",
+        "type": "scientist",
+        "note": 18
+      }
+    ]
+  }
+]
