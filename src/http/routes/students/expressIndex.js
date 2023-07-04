@@ -1,10 +1,10 @@
 const express = require('express');
 const router  = express.Router();
 
-const makeExpressCallback = require('../../../adapters/express');
+const makeCallback = require('../../../adapters/express');
 
 const { getAll } = require('../../../http/handlers/students');
 
-router.get("/", makeExpressCallback(getAll))
+router.get("/", makeCallback(getAll))
 
 module.exports = router;
