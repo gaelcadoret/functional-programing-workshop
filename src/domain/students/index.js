@@ -40,10 +40,7 @@ const buildLiteraryAverageResult = ({id, firstName, lastName, subjects}) => ({
     average: calcLiteraryAverage(subjects),
 });
 
-const getScientistAverageResults = map(buildScientistAverageResult);
-const getLiteraryAverageResults = map(buildLiteraryAverageResult);
-
 module.exports = {
-    getScientistAverageResults,
-    getLiteraryAverageResults,
+    getScientistAverageResults: map(buildScientistAverageResult),
+    getLiteraryAverageResults: map(buildLiteraryAverageResult),
 }

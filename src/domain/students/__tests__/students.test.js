@@ -1,5 +1,9 @@
 const { getScientistAverageResults, getLiteraryAverageResults } = require("../index");
 
+const funcThrow = async () => {
+    throw new Error('Hey...');
+}
+
 describe('[Domain] Students', () => {
     describe('getScientistAverageResults', () => {
         it('Should keep scientist notes and return the average for each students', () => {
@@ -160,4 +164,10 @@ describe('[Domain] Students', () => {
             ]);
         });
     });
+
+    describe('Throw Error', () => {
+        it('should throw error', async () => {
+            await expect(() => funcThrow()).rejects.toThrow('Hey...');
+        })
+    })
 });
