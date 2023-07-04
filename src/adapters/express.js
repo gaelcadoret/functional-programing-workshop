@@ -22,7 +22,6 @@ const buildHttpRequest = (req) => ({
 
 module.exports = (controller) => async (req, res, next) => {
     try {
-        console.log('req', req);
         const httpResponse = await controller(buildHttpRequest(req));
 
         res.set('Content-Type', 'application/json');
