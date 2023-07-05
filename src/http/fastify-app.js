@@ -9,6 +9,8 @@ const logger = require("./middlewares/logger");
 const routes = require("./routes/fastifyIndex");
 
 module.exports = async () => {
+  console.log('Starting Fastify app...');
+
   await fastify.register(fastifyExpress);
 
   fastify.use(compression());
