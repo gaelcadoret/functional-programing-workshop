@@ -37,6 +37,7 @@ const TYPE_GT = 'gt';
 const filter = (fn) => (arr) => arr.filter(fn);
 const filterByKeyVal = (key , val) => (obj) => obj[key] === val;
 const map = (fn) => (arr) => arr.map(fn);
+const pipe = (...fns) => (x) => fns.reduce((v, f) => f(v), x);
 
 /** *************
  * business logic
@@ -48,9 +49,6 @@ const filterGtCar = filterByKeyVal('type', TYPE_GT);
 const filterCarsByTypeSport = filter(filterSportCar);
 const filterCarsByTypeGt = filter(filterGtCar);
 
-const sportCars = filterCarsByTypeSport(cars);
-const gtCars = filterCarsByTypeGt(cars);
-
 const buildCarLabel = (car) => `${car.brand} (${car.model})`
 
 const buildCarsLabel = map(buildCarLabel);
@@ -59,11 +57,18 @@ const buildCarsLabel = map(buildCarLabel);
  *    handler
  * **************
  */
-const sportCarsList = buildCarsLabel(sportCars);
-const gtCarsList = buildCarsLabel(gtCars);
+const sportPipeline = pipe(
+    filterCarsByTypeSport,
+    buildCarsLabel
+);
 
-console.log("sportCarsList", JSON.stringify(sportCarsList));
-console.log("gtCarsList", JSON.stringify(gtCarsList));
+const gtPipeline = pipe(
+    filterCarsByTypeGt,
+    buildCarsLabel
+);
 
-console.log("is sport cars' list is correct", JSON.stringify(sportCarsList) === '["audi (R8 coupé v10 performance quattro)","porsche (911 sport classic)"]')
-console.log("is GT cars' list is correct", JSON.stringify(gtCarsList) === '["audi (sportback TFSI)","porsche (Panamera 4 executive)"]')
+console.log("sportCarsList", JSON.stringify(sportPipeline(cars)));
+console.log("gtCarsList", JSON.stringify(gtPipeline(cars)));
+
+console.log("is sport cars' list is correct", JSON.stringify(sportPipeline(cars)) === '["audi (R8 coupé v10 performance quattro)","porsche (911 sport classic)"]')
+console.log("is GT cars' list is correct", JSON.stringify(gtPipeline(cars)) === '["audi (sportback TFSI)","porsche (Panamera 4 executive)"]')

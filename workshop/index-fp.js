@@ -27,8 +27,11 @@ const cars = [
     },
 ]
 
-const filterSportCar = (car) => car.type === 'sport';
-const filterGtCar = (car) => car.type === 'gt';
+const TYPE_SPORT = 'sport';
+const TYPE_GT = 'gt';
+
+const filterSportCar = (car) => car.type === TYPE_SPORT;
+const filterGtCar = (car) => car.type === TYPE_GT;
 
 const sportCars = cars.filter(filterSportCar);
 const gtCars = cars.filter(filterGtCar)
@@ -38,8 +41,8 @@ const buildCarLabel = (car) => `${car.brand} (${car.model})`
 const sportCarsList = sportCars.map(buildCarLabel)
 const gtCarsList = gtCars.map(buildCarLabel)
 
-console.log("sportCars", sportCars)
-console.log("gtCars", gtCars)
+console.log("sportCarsList", JSON.stringify(sportCarsList));
+console.log("gtCarsList", JSON.stringify(gtCarsList));
 
-console.log("sportCarsList", sportCarsList)
-console.log("gtCarsList", gtCarsList)
+console.log("is sport cars' list is correct", JSON.stringify(sportCarsList) === '["audi (R8 coupé v10 performance quattro)","porsche (911 sport classic)"]')
+console.log("is GT cars' list is correct", JSON.stringify(gtCarsList) === '["audi (sportback TFSI)","porsche (Panamera 4 executive)"]')
