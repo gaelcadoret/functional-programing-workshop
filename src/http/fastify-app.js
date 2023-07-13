@@ -15,7 +15,7 @@ module.exports = async () => {
 
   fastify.use(compression());
   fastify.use(cors());
-  fastify.use(logger);
+  // fastify.use(logger);
 
   fastify.register(routes, {
     prefix: '/api'

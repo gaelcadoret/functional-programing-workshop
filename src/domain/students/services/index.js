@@ -2,12 +2,10 @@ const { findAll } = require("../../../infra/orm/mongoClient/repositories/student
 
 const { getScientistAverageResults, getLiteraryAverageResults } = require('../index');
 
-const getAllStudents = async (type) => {
-    const students = await findAll();
-    return type === 'scientist'
-        ? getScientistAverageResults(students)
-        : getLiteraryAverageResults(students);
-};
+const getAllStudents = async (type) =>
+    type === 'scientist'
+        ? getScientistAverageResults(await findAll())
+        : getLiteraryAverageResults(await findAll());
 
 module.exports = {
     getAllStudents,
