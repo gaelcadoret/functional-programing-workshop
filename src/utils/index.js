@@ -8,6 +8,11 @@ const reduce = (fn, initialValue) => (arr) => arr.reduce(fn, initialValue);
 const add = (a, b) => a + b;
 const divide = (a, b) => a / b;
 
+const euro = new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+});
+
 module.exports = {
     log,
     pipe,
@@ -17,4 +22,5 @@ module.exports = {
     reduce,
     add,
     divide,
+    euro,
 }

@@ -1,6 +1,6 @@
 console.log('workshop (fp) v4');
 const { pipe } = require('../src/utils');
-const { filterCarsByTypeSport, filterCarsByTypeGt, buildCarsLabel } = require('./domains/cars');
+const { filterCarsByTypeSport, filterCarsByTypeGt, buildCarsLabel, buildCarsLabelWithPrice} = require('./domains/cars');
 
 const cars = [
     {
@@ -40,11 +40,11 @@ const sportPipeline = pipe(
 
 const gtPipeline = pipe(
     filterCarsByTypeGt,
-    buildCarsLabel
+    buildCarsLabelWithPrice
 );
 
 console.log("sportCarsList", JSON.stringify(sportPipeline(cars)));
 console.log("gtCarsList", JSON.stringify(gtPipeline(cars)));
 
 console.log("is sport cars' list is correct", JSON.stringify(sportPipeline(cars)) === '["audi (R8 coupé v10 performance quattro)","porsche (911 sport classic)"]')
-console.log("is GT cars' list is correct", JSON.stringify(gtPipeline(cars)) === '["audi (sportback TFSI)","porsche (Panamera 4 executive)"]')
+console.log("is GT cars' list is correct", JSON.stringify(gtPipeline(cars)) === '["audi - 85 000,00 € TTC (sportback TFSI)","porsche - 113 553,00 € TTC (Panamera 4 executive)"]')
