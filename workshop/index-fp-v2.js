@@ -1,4 +1,4 @@
-console.log('workshop (fp)');
+console.log('workshop (fp) v2');
 
 const cars = [
     {
@@ -30,37 +30,16 @@ const cars = [
 const TYPE_SPORT = 'sport';
 const TYPE_GT = 'gt';
 
-/** **************
- *  Util functions
- * ***************
- */
-const filter = (fn) => (arr) => arr.filter(fn);
-const filterByKeyVal = (key , val) => (obj) => obj[key] === val;
-const map = (fn) => (arr) => arr.map(fn);
+const filterSportCar = (car) => car.type === TYPE_SPORT;
+const filterGtCar = (car) => car.type === TYPE_GT;
 
-/** *************
- * business logic
- * **************
- */
-const filterSportCar = filterByKeyVal('type', TYPE_SPORT);
-const filterGtCar = filterByKeyVal('type', TYPE_GT);
-
-const filterCarsByTypeSport = filter(filterSportCar);
-const filterCarsByTypeGt = filter(filterGtCar);
-
-const sportCars = filterCarsByTypeSport(cars);
-const gtCars = filterCarsByTypeGt(cars);
+const sportCars = cars.filter(filterSportCar);
+const gtCars = cars.filter(filterGtCar)
 
 const buildCarLabel = (car) => `${car.brand} (${car.model})`
 
-const buildCarsLabel = map(buildCarLabel);
-
-/** *************
- *    handler
- * **************
- */
-const sportCarsList = buildCarsLabel(sportCars);
-const gtCarsList = buildCarsLabel(gtCars);
+const sportCarsList = sportCars.map(buildCarLabel)
+const gtCarsList = gtCars.map(buildCarLabel)
 
 console.log("sportCarsList", JSON.stringify(sportCarsList));
 console.log("gtCarsList", JSON.stringify(gtCarsList));

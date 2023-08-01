@@ -1,5 +1,5 @@
-// const initApp = require('./express-app');
-const initApp = require('./fastify-app');
+const initApp = require('./express-app');
+// const initApp = require('./fastify-app');
 
 const PORT = 3003;
 

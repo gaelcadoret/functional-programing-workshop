@@ -1,4 +1,4 @@
-console.log('workshop');
+console.log('workshop v1');
 
 const cars = [
     {
@@ -27,14 +27,27 @@ const cars = [
     },
 ];
 
+/**
+ * Ennoncé :
+ *
+ * 1°) Dans un 1er temps, retourner un tableau contenant les voitures de type "SPORT" et pour lesquelles chaque voiture
+ *   est formattée de la manière suivante : Marque (model) - Exemple => ["porsche (911 sport classic)"]
+ *
+ * 2°) Puis dans un 2nd temps, même exercice avec les voiture de type "GT"
+ */
+
 const TYPE_SPORT = 'sport';
 const TYPE_GT = 'gt';
 
-const sportCars = cars.filter((car) => car.type === TYPE_SPORT);
-const gtCars = cars.filter((car) => car.type === TYPE_GT);
+/** Etape n°1, lister les voitures de type "SPORT" */
+const sportCarsList = cars
+    .filter((car) => car.type === TYPE_SPORT)
+    .map((car) => `${car.brand} (${car.model})`);
 
-const sportCarsList = sportCars.map((car) => `${car.brand} (${car.model})`);
-const gtCarsList = gtCars.map((car) => `${car.brand} (${car.model})`);
+/** Etape n°2, lister les voitures de type "GT" */
+const gtCarsList = cars
+    .filter((car) => car.type === TYPE_GT)
+    .map((car) => `${car.brand} (${car.model})`);
 
 console.log("sportCarsList", JSON.stringify(sportCarsList));
 console.log("gtCarsList", JSON.stringify(gtCarsList));

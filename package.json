@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node ./src/http/server.js",
     "test": "jest",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "v1": "node workshop/index.js",
+    "v2": "node workshop/index-fp-v2.js",
+    "v3": "node workshop/index-fp-v3.js",
+    "v4": "node workshop/index-fp-v4.js"
   },
   "keywords": [],
   "author": "",
