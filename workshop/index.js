@@ -40,14 +40,10 @@ const TYPE_SPORT = 'sport';
 const TYPE_GT = 'gt';
 
 /** Etape n°1, lister les voitures de type "SPORT" */
-const sportCarsList = cars
-    .filter((car) => car.type === TYPE_SPORT)
-    .map((car) => `${car.brand} (${car.model})`);
+const sportCarsList = [];
 
 /** Etape n°2, lister les voitures de type "GT" */
-const gtCarsList = cars
-    .filter((car) => car.type === TYPE_GT)
-    .map((car) => `${car.brand} (${car.model})`);
+const gtCarsList = [];
 
 console.log("sportCarsList", JSON.stringify(sportCarsList));
 console.log("gtCarsList", JSON.stringify(gtCarsList));
