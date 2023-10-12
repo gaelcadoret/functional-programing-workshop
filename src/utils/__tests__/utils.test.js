@@ -7,6 +7,10 @@ const {
     filterByProp,
     map,
     reduce,
+    addLanguagesToTranslations,
+    compose,
+    existsFn,
+    differenceFn,
 } = require('../');
 
 describe('utils', () => {
@@ -91,4 +95,59 @@ describe('utils', () => {
             }]);
         });
     });
+
+    describe('addLanguagesToTranslations', () => {
+        it('should addLanguagesToTranslations - return array with keys and fallback', () => {
+            // Given
+            const translations = [
+                { locale: 'en_US', key1: 'English Key 1', key2: 'English Key 2' },
+                { locale: 'fr_FR', key1: 'French Key 1', key2: 'French Key 2' }
+            ];
+
+            const languages = [
+                { code: 'en_US', fallback: { code: 'en_US' } },
+                { code: 'fr_FR', fallback: { code: 'en_US' } },
+                { code: 'de_DE', fallback: { code: 'en_US' } }
+            ];
+
+            // When
+            const result = addLanguagesToTranslations(translations, languages);
+
+            // Then
+            expect(result).toEqual([
+                { locale: 'en_US', key1: 'English Key 1', key2: 'English Key 2' },
+                { locale: 'fr_FR', key1: 'French Key 1', key2: 'French Key 2' },
+                { locale: 'de_DE', key1: '', key2: '', fallback: 'en_US' },
+            ]);
+        });
+    })
+
+    // describe('differenceWith', () => {
+    //     it('should return the difference between 2 arrays', () => {
+    //         // Given
+    //         const referenceArray = [
+    //             { locale: 'en_US', key1: 'English Key 1', key2: 'English Key 2' },
+    //             { locale: 'fr_FR', key1: 'French Key 1', key2: 'French Key 2' }
+    //         ];
+    //
+    //         const languages = [
+    //             { locale: 'en_US', key1: 'English Key 1', key2: 'English Key 2' },
+    //             { locale: 'fr_FR', key1: 'French Key 1', key2: 'French Key 2' },
+    //             { locale: 'de_DE', key1: 'Deutch Key 1', key2: 'Deutch Key 2' },
+    //         ];
+    //
+    //         // When
+    //         const composedFunction = (refArray, cmpArray) => compose(
+    //             differenceFn(refArray),
+    //             existsFn(cmpArray)
+    //         );
+    //
+    //         const result = composedFunction(referenceArray, languages);
+    //
+    //         // Then
+    //         expect(result).toEqual([
+    //             { locale: 'de_DE', key1: 'Deutch Key 1', key2: 'Deutch Key 2' },
+    //         ]);
+    //     });
+    // })
 });

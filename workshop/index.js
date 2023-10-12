@@ -39,14 +39,41 @@ const cars = [
 const TYPE_SPORT = 'sport';
 const TYPE_GT = 'gt';
 
+const pipe = (...fns) => (x) => fns.reduce((v, f) => f(v), x);
+
+const map = (fn) => (arr) => arr.map(fn);
+const filter = (fn) => (arr) => arr.filter(fn);
+
+const filterByKeyValue = (key, value) => (obj) => obj[key] === value;
+const filterByTypeSport = filterByKeyValue("type", TYPE_SPORT);
+const filterByTypeGT = filterByKeyValue("type", TYPE_GT);
+
+const buildStringCar = (car) => `${car.brand} (${car.model})`;
+
+const buildCarsLabel = map(buildStringCar);
+
+const filterArrByTypeSport = filter(filterByTypeSport);
+const filterArrByTypeGt = filter(filterByTypeGT);
+
+
 /** Etape n°1, lister les voitures de type "SPORT" */
-const sportCarsList = [];
+const pipelineTypeSport = pipe(
+    filterArrByTypeSport,
+    buildCarsLabel,
+)
+
+const sportCarsList = pipelineTypeSport(cars)
+
 
 /** Etape n°2, lister les voitures de type "GT" */
-const gtCarsList = [];
+const pipelineTypeGt = pipe(
+    filterArrByTypeGt,
+    buildCarsLabel
+)
+const gtCarsList = pipelineTypeGt(cars);
 
 console.log("sportCarsList", JSON.stringify(sportCarsList));
 console.log("gtCarsList", JSON.stringify(gtCarsList));
 
-console.log("is sport cars' list is correct", JSON.stringify(sportCarsList) === '["audi (R8 coupé v10 performance quattro)","porsche (911 sport classic)"]')
-console.log("is GT cars' list is correct", JSON.stringify(gtCarsList) === '["audi (sportback TFSI)","porsche (Panamera 4 executive)"]')
+console.log("is sport cars' list is correct", JSON.stringify(sportCarsList) === '["audi (R8 coupé v10 performance quattro)","porsche (911 sport classic)"]');
+console.log("is GT cars' list is correct", JSON.stringify(gtCarsList) === '["audi (sportback TFSI)","porsche (Panamera 4 executive)"]');
